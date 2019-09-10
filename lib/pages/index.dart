@@ -167,12 +167,12 @@ class _HomeState extends State<Home> {
                         recommend[i]['content']['status'] == null
                             ? Container()
                             : Wrap(
-                                spacing: 10,
+                                spacing: 5,
                                 children:
                                     recommend[i]['content']['status']['images'].map<Widget>((item) {
                                   return Container(
-                                    width: (width - 60) / 3,
-                                    height: (width - 60) / 3,
+                                    width: (width - 50) / 3,
+                                    height: (width - 50) / 3,
                                     child: CachedNetworkImage(
                                       imageUrl: '${item['large']['url']}',
                                       placeholder: (context, url) => new Container(
@@ -195,11 +195,11 @@ class _HomeState extends State<Home> {
                         recommend[i]['content']['photos'] == null
                             ? Container()
                             : Wrap(
-                                spacing: 10,
+                                spacing: 5,
                                 children: recommend[i]['content']['photos'].map<Widget>((item) {
                                   return Container(
-                                    width: (width - 60) / 3,
-                                    height: (width - 60) / 3,
+                                    width: (width - 50) / 3,
+                                    height: (width - 50) / 3,
                                     child: CachedNetworkImage(
                                       imageUrl: '${item['image']['large']['url']}',
                                       placeholder: (context, url) => new Container(
@@ -208,7 +208,9 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                       errorWidget: (context, url, error) => new Icon(Icons.error),
-                                      fit: BoxFit.cover,
+                                      width: (width - 60) / 3,
+                                      height: (width - 60) / 3,
+                                      fit: BoxFit.cover
                                     ),
                                   );
                                 }).toList(),
