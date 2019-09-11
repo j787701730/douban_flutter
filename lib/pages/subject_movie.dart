@@ -10,7 +10,10 @@ class SubjectMovie extends StatefulWidget {
   _SubjectMovieState createState() => _SubjectMovieState();
 }
 
-class _SubjectMovieState extends State<SubjectMovie> {
+class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   void initState() {
     super.initState();
@@ -59,7 +62,6 @@ class _SubjectMovieState extends State<SubjectMovie> {
               movieSelectedCollections = o;
             }
           }
-          print(jsonEncode(response.data));
         });
       }
     } catch (e) {
@@ -79,14 +81,13 @@ class _SubjectMovieState extends State<SubjectMovie> {
       );
       if (mounted) {
         setState(() {
-          weekPlays.addAll(response.data['items']) ;
+          weekPlays.addAll(response.data['items']);
 //          print(jsonEncode(response.data));
         });
         if (type == 'load') {
           _refreshController.loadComplete();
         }
       }
-
     } catch (e) {
 //      return print(e);
     }
@@ -122,8 +123,8 @@ class _SubjectMovieState extends State<SubjectMovie> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     double width = MediaQuery.of(context).size.width;
-    print(jsonEncode(weekPlays));
     return SmartRefresher(
       enablePullDown: false,
       enablePullUp: true,
@@ -534,7 +535,7 @@ class _SubjectMovieState extends State<SubjectMovie> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
-                    fontWeight: !showTab ? FontWeight.bold : FontWeight.normal,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -626,7 +627,7 @@ class _SubjectMovieState extends State<SubjectMovie> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
-                    fontWeight: !showTab ? FontWeight.bold : FontWeight.normal,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
