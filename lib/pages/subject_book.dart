@@ -9,7 +9,10 @@ class SubjectBook extends StatefulWidget {
   _SubjectBookState createState() => _SubjectBookState();
 }
 
-class _SubjectBookState extends State<SubjectBook> {
+class _SubjectBookState extends State<SubjectBook> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   void initState() {
     super.initState();
@@ -180,6 +183,7 @@ class _SubjectBookState extends State<SubjectBook> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     double width = MediaQuery.of(context).size.width;
     return SmartRefresher(
         enablePullDown: false,

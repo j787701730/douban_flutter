@@ -10,7 +10,10 @@ class SubjectTV extends StatefulWidget {
   _SubjectTVState createState() => _SubjectTVState();
 }
 
-class _SubjectTVState extends State<SubjectTV> {
+class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   void initState() {
     super.initState();
@@ -238,6 +241,7 @@ class _SubjectTVState extends State<SubjectTV> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     double width = MediaQuery.of(context).size.width;
     return SmartRefresher(
         enablePullDown: false,
@@ -265,7 +269,7 @@ class _SubjectTVState extends State<SubjectTV> {
         ),
         controller: _refreshController,
         onLoading: _onLoading,
-        child: ListView(padding: EdgeInsets.all(15),children: <Widget>[
+        child: ListView(padding: EdgeInsets.all(15), children: <Widget>[
           tvSubjectEntrances.isEmpty
               ? Container()
               : Container(
@@ -704,26 +708,17 @@ class _SubjectTVState extends State<SubjectTV> {
               ),
             ),
           ),
-          recommendTVs.isEmpty?Container():
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: recommendTVs.map<Widget>((item) {
+          recommendTVs.isEmpty
+              ? Container()
+              : Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: recommendTVs.map<Widget>((item) {
                       return Container(
-                        margin: EdgeInsets.only(
-                          bottom: 15
-                        ),
-                        padding: EdgeInsets.only(
-                          bottom: 10
-                        ),
+                        margin: EdgeInsets.only(bottom: 15),
+                        padding: EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Color(0xffeeeeee),
-                              width: 1
-                            )
-                          )
-                        ),
+                            border: Border(bottom: BorderSide(color: Color(0xffeeeeee), width: 1))),
                         child: Row(
                           children: <Widget>[
                             ClipRRect(
@@ -754,13 +749,10 @@ class _SubjectTVState extends State<SubjectTV> {
                                       text: '${item['title']}',
                                       children: <TextSpan>[
                                         TextSpan(
-                                          text: '(${item['year']})',
-                                          style: TextStyle(
-                                            color: Color(0xff999999)
-                                          )
-                                        )
+                                            text: '(${item['year']})',
+                                            style: TextStyle(color: Color(0xff999999)))
                                       ],
-                                    style: TextStyle(fontSize: 20,color: Colors.black),
+                                      style: TextStyle(fontSize: 20, color: Colors.black),
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -773,13 +765,11 @@ class _SubjectTVState extends State<SubjectTV> {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   Container(
-                                    margin: EdgeInsets.only(
-                                      top: 6
-                                    ),
+                                    margin: EdgeInsets.only(top: 6),
                                     width: width,
                                     padding: EdgeInsets.all(6),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                                        borderRadius: BorderRadius.all(Radius.circular(6)),
                                         color: Color(0xffF7F7F7)),
                                     child: Text(
                                       '你可能感兴趣',
@@ -794,9 +784,9 @@ class _SubjectTVState extends State<SubjectTV> {
                           ],
                         ),
                       );
-                  }).toList(),
-                ),
-              )
+                    }).toList(),
+                  ),
+                )
         ]));
   }
 }
