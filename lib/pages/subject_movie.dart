@@ -367,12 +367,12 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                       runSpacing: 15,
                       children: movieShowing.map<Widget>((item) {
                         return Container(
-                          width: (width - 20 - 20) / 2,
+                          width: (width - 30 - 20) / 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height: (width - 20 - 20) / 2 * 810 / 540,
+                                height: (width - 30 - 20) / 3 * 810 / 540,
                                 child: Stack(
                                   children: <Widget>[
                                     Positioned(
@@ -386,8 +386,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                           ),
                                         ),
                                         errorWidget: (context, url, error) => new Icon(Icons.error),
-                                        width: (width - 20 - 20) / 2,
-                                        height: (width - 20 - 20) / 2 * 810 / 540,
+                                        width: (width - 30 - 20) / 3,
+                                        height: (width - 30 - 20) / 3 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),
@@ -439,12 +439,12 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                       runSpacing: 15,
                       children: movieSoon.map<Widget>((item) {
                         return Container(
-                          width: (width - 20 - 20) / 2,
+                          width: (width - 30 - 20) / 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height: (width - 20 - 20) / 2 * 810 / 540,
+                                height: (width - 30 - 20) / 3 * 810 / 540,
                                 child: Stack(
                                   children: <Widget>[
                                     Positioned(
@@ -458,8 +458,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                           ),
                                         ),
                                         errorWidget: (context, url, error) => new Icon(Icons.error),
-                                        width: (width - 20 - 20) / 2,
-                                        height: (width - 20 - 20) / 2 * 810 / 540,
+                                        width: (width - 30 - 20) / 3,
+                                        height: (width - 30 - 20) / 3 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),

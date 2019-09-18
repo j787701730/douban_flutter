@@ -17,13 +17,13 @@ class Rating extends StatelessWidget {
             );
           }).toList(),
         ),
-        ratingValue % 1 > 0.5
+        ratingValue % 1 > 0.099
             ? Image.asset(
-                'images/rating_star_xsmall_on.webp',
+                'images/rating_star_xsmall_half.webp',
                 width: 20,
               )
             : Image.asset(
-                'images/rating_star_xsmall_half.webp',
+                'images/rating_star_xsmall_off.webp',
                 width: 20,
               ),
         Row(
