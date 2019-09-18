@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import './rating_widget.dart';
 
 class SubjectMovie extends StatefulWidget {
   @override
@@ -322,7 +323,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                       '影院热映',
                       style: TextStyle(
                         color: !showTab ? Colors.black : Color(0xff808080),
-                        fontSize: 30,
+                        fontSize: 20,
                         fontWeight: !showTab ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
@@ -347,7 +348,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                       '即将上映',
                       style: TextStyle(
                         color: showTab ? Colors.black : Color(0xff808080),
-                        fontSize: 30,
+                        fontSize: 20,
                         fontWeight: showTab ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
@@ -418,15 +419,9 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(top: 5, bottom: 5),
-                                child: Text(
-                                  '${item['rating'] == null ? '' : item['rating']['value']}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 20, color: Color(0xff808080)),
-                                ),
-                              )
+                              item['rating'] == null
+                                  ? Container()
+                                  : Rating(double.tryParse('${item['rating']['value']}'))
                             ],
                           ),
                         );
@@ -534,7 +529,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                   '豆瓣热门',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -601,15 +596,9 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
-                              child: Text(
-                                '${item['rating'] == null ? '' : item['rating']['value']}',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 20, color: Color(0xff808080)),
-                              ),
-                            )
+                            item['rating'] == null
+                                ? Container()
+                                : Rating(double.tryParse('${item['rating']['value']}'))
                           ],
                         ),
                       );
@@ -626,7 +615,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                   '豆瓣榜单',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

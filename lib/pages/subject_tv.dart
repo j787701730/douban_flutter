@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:douban_flutter/pages/rating_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -222,15 +223,9 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                  child: Text(
-                    '${item['rating'] == null ? '' : item['rating']['value']}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20, color: Color(0xff808080)),
-                  ),
-                )
+                item['rating'] == null
+                    ? Container()
+                    : Rating(double.tryParse('${item['rating']['value']}'))
               ],
             ),
           );
@@ -315,7 +310,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '热播新剧',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -404,7 +399,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '热播综艺',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -473,7 +468,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '豆瓣榜单',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -574,7 +569,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '分类浏览',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -616,7 +611,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '即将播出剧集',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -701,7 +696,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '为你推荐',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -757,7 +752,9 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Text('${item['rating'] == null ? '' : item['rating']['value']}'),
+                                  item['rating'] == null
+                                      ? Container()
+                                      : Rating(double.tryParse('${item['rating']['value']}')),
                                   Text(
                                     '${item['card_subtitle']}',
                                     style: TextStyle(),
