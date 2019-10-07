@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:douban_flutter/pages/rating_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -10,7 +11,8 @@ class SubjectTV extends StatefulWidget {
   _SubjectTVState createState() => _SubjectTVState();
 }
 
-class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixin {
+class _SubjectTVState extends State<SubjectTV>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -78,23 +80,32 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
             if (o['module_name'] == 'tv_subject_entrances') {
               tvSubjectEntrances = o;
             } else if (o['module_name'] == 'tv_hot') {
-              tvHot = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvHot = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_domestic') {
-              tvDomestic = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvDomestic = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_american') {
-              tvAmerican = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvAmerican = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_japanese') {
-              tvJapanese = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvJapanese = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_korean') {
-              tvKorean = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvKorean = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_animation') {
-              tvAnimation = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              tvAnimation = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'show_hot') {
-              showHot = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              showHot = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'show_domestic') {
-              showDomestic = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              showDomestic = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'show_foreign') {
-              showForeign = o['data']['subject_collection_boards'][0]['items'].sublist(0, 9);
+              showForeign = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 9);
             } else if (o['module_name'] == 'tv_selected_collections') {
               tvSelectedCollections = o['data']['selected_collections'];
             } else if (o['module_name'] == 'tv_coming_soon') {
@@ -110,7 +121,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
   }
 
   int start = 0;
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   // 为你推荐的
   _getRecommend2(type) async {
@@ -188,7 +200,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                               child: CupertinoActivityIndicator(),
                             ),
                           ),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              new Icon(Icons.error),
                           width: (width - 30 - 20) / 3,
                           height: (width - 30 - 20) / 3 * 810 / 540,
                           fit: BoxFit.cover,
@@ -222,15 +235,9 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     style: TextStyle(),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                  child: Text(
-                    '${item['rating'] == null ? '' : item['rating']['value']}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Color(0xff808080)),
-                  ),
-                )
+                item['rating'] == null
+                    ? Container()
+                    : Rating(double.tryParse('${item['rating']['value']}'))
               ],
             ),
           );
@@ -275,7 +282,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
               : Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: tvSubjectEntrances['data']['subject_entraces'].map<Widget>((item) {
+                    children: tvSubjectEntrances['data']['subject_entraces']
+                        .map<Widget>((item) {
                       return Container(
                         child: Center(
                           child: Column(
@@ -287,7 +295,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 width: 40,
                                 height: 40,
                                 fit: BoxFit.cover,
@@ -325,7 +334,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 20),
             decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Color(0xff999999), width: 1))),
+                border: Border(
+                    bottom: BorderSide(color: Color(0xff999999), width: 1))),
             child: Row(
               children: tvList.map<Widget>((item) {
                 int idx = tvList.indexOf(item);
@@ -341,13 +351,16 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                color: tvType == idx ? Colors.black : Colors.transparent,
+                                color: tvType == idx
+                                    ? Colors.black
+                                    : Colors.transparent,
                                 width: 3))),
                     child: Text(
                       '$item',
                       style: TextStyle(
                         color: tvType == idx ? Colors.black : Color(0xff808080),
-                        fontWeight: tvType == idx ? FontWeight.bold : FontWeight.normal,
+                        fontWeight:
+                            tvType == idx ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -413,7 +426,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 20),
             decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Color(0xff999999), width: 1))),
+                border: Border(
+                    bottom: BorderSide(color: Color(0xff999999), width: 1))),
             child: Row(
               children: showList.map<Widget>((item) {
                 int idx = showList.indexOf(item);
@@ -429,14 +443,19 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                color: showType == idx ? Colors.black : Colors.transparent,
+                                color: showType == idx
+                                    ? Colors.black
+                                    : Colors.transparent,
                                 width: 3))),
                     child: Text(
                       '$item',
                       style: TextStyle(
-                        color: showType == idx ? Colors.black : Color(0xff808080),
+                        color:
+                            showType == idx ? Colors.black : Color(0xff808080),
                         fontSize: 18,
-                        fontWeight: showType == idx ? FontWeight.bold : FontWeight.normal,
+                        fontWeight: showType == idx
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -488,7 +507,9 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     children: tvSelectedCollections.map<Widget>((item) {
                       return Container(
                         margin: EdgeInsets.only(
-                            left: tvSelectedCollections.indexOf(item) == 0 ? 0 : 15),
+                            left: tvSelectedCollections.indexOf(item) == 0
+                                ? 0
+                                : 15),
                         width: width * 0.618,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -497,9 +518,11 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                               height: 220,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(6), topRight: Radius.circular(6)),
+                                    topLeft: Radius.circular(6),
+                                    topRight: Radius.circular(6)),
                                 image: DecorationImage(
-                                    image: NetworkImage('${item['header_bg_image']}'),
+                                    image: NetworkImage(
+                                        '${item['header_bg_image']}'),
                                     fit: BoxFit.cover),
                               ),
                               child: Stack(
@@ -517,7 +540,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     left: 10,
                                     child: Text(
                                       '${item['name']}',
-                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
                                     ),
                                   )
                                 ],
@@ -526,7 +550,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                             Container(
                               height: 120,
                               width: width * 0.618,
-                              padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                              padding:
+                                  EdgeInsets.only(top: 10, left: 15, right: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(6),
@@ -539,14 +564,17 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                   return Container(
                                     child: RichText(
                                       text: TextSpan(
-                                          text: '${item['items'].indexOf(list) + 1}. ',
-                                          style: TextStyle(fontSize: 16, height: 1.2),
+                                          text:
+                                              '${item['items'].indexOf(list) + 1}. ',
+                                          style: TextStyle(
+                                              fontSize: 16, height: 1.2),
                                           children: <TextSpan>[
                                             TextSpan(text: '${list['title']}'),
                                             TextSpan(
                                                 text:
                                                     ' ${list['rating'] == null ? '' : list['rating']['value']}',
-                                                style: TextStyle(color: Color(0xffF4A833))),
+                                                style: TextStyle(
+                                                    color: Color(0xffF4A833))),
                                           ]),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -634,7 +662,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                         child: Row(
                           children: <Widget>[
                             ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(6)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(6)),
                               child: CachedNetworkImage(
                                 imageUrl: '${item['pic']['normal']}',
                                 placeholder: (context, url) => new Container(
@@ -642,7 +671,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 width: 72,
                                 height: 100,
                                 fit: BoxFit.cover,
@@ -665,7 +695,9 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                   Container(
                                     decoration: BoxDecoration(
                                         border: Border(
-                                            left: BorderSide(color: Color(0xffFF9F0D), width: 2))),
+                                            left: BorderSide(
+                                                color: Color(0xffFF9F0D),
+                                                width: 2))),
                                     child: Text(
                                       ' ${item['pubdate'].join(', ')}开播',
                                       style: TextStyle(),
@@ -717,11 +749,14 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                         margin: EdgeInsets.only(bottom: 15),
                         padding: EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
-                            border: Border(bottom: BorderSide(color: Color(0xffeeeeee), width: 1))),
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: Color(0xffeeeeee), width: 1))),
                         child: Row(
                           children: <Widget>[
                             ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(6)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(6)),
                               child: CachedNetworkImage(
                                 imageUrl: '${item['pic']['normal']}',
                                 placeholder: (context, url) => new Container(
@@ -729,7 +764,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 width: 72,
                                 height: 100,
                                 fit: BoxFit.cover,
@@ -749,14 +785,19 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                       children: <TextSpan>[
                                         TextSpan(
                                             text: '(${item['year']})',
-                                            style: TextStyle(color: Color(0xff999999)))
+                                            style: TextStyle(
+                                                color: Color(0xff999999)))
                                       ],
-                                      style: TextStyle(fontSize: 20, color: Colors.black),
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black),
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Text('${item['rating'] == null ? '' : item['rating']['value']}'),
+                                  item['rating'] == null
+                                      ? Container()
+                                      : Rating(double.tryParse(
+                                          '${item['rating']['value']}')),
                                   Text(
                                     '${item['card_subtitle']}',
                                     style: TextStyle(),
@@ -768,7 +809,8 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                                     width: width,
                                     padding: EdgeInsets.all(6),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(6)),
                                         color: Color(0xffF7F7F7)),
                                     child: Text(
                                       '你可能感兴趣',

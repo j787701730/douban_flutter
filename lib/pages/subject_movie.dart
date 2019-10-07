@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import './rating_widget.dart';
 
 class SubjectMovie extends StatefulWidget {
   @override
@@ -391,12 +392,12 @@ class _SubjectMovieState extends State<SubjectMovie>
                       runSpacing: 15,
                       children: movieShowing.map<Widget>((item) {
                         return Container(
-                          width: (width - 20 - 20) / 2,
+                          width: (width - 30 - 20) / 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height: (width - 20 - 20) / 2 * 810 / 540,
+                                height: (width - 30 - 20) / 3 * 810 / 540,
                                 child: Stack(
                                   children: <Widget>[
                                     Positioned(
@@ -413,9 +414,9 @@ class _SubjectMovieState extends State<SubjectMovie>
                                         ),
                                         errorWidget: (context, url, error) =>
                                             new Icon(Icons.error),
-                                        width: (width - 20 - 20) / 2,
+                                        width: (width - 30 - 20) / 3,
                                         height:
-                                            (width - 20 - 20) / 2 * 810 / 540,
+                                            (width - 30 - 20) / 3 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),
@@ -446,15 +447,10 @@ class _SubjectMovieState extends State<SubjectMovie>
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(top: 5, bottom: 5),
-                                child: Text(
-                                  '${item['rating'] == null ? '' : item['rating']['value']}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(color: Color(0xff808080)),
-                                ),
-                              )
+                              item['rating'] == null
+                                  ? Container()
+                                  : Rating(double.tryParse(
+                                      '${item['rating']['value']}'))
                             ],
                           ),
                         );
@@ -472,12 +468,12 @@ class _SubjectMovieState extends State<SubjectMovie>
                       runSpacing: 15,
                       children: movieSoon.map<Widget>((item) {
                         return Container(
-                          width: (width - 20 - 20) / 2,
+                          width: (width - 30 - 20) / 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height: (width - 20 - 20) / 2 * 810 / 540,
+                                height: (width - 30 - 20) / 3 * 810 / 540,
                                 child: Stack(
                                   children: <Widget>[
                                     Positioned(
@@ -494,9 +490,9 @@ class _SubjectMovieState extends State<SubjectMovie>
                                         ),
                                         errorWidget: (context, url, error) =>
                                             new Icon(Icons.error),
-                                        width: (width - 20 - 20) / 2,
+                                        width: (width - 30 - 20) / 3,
                                         height:
-                                            (width - 20 - 20) / 2 * 810 / 540,
+                                            (width - 30 - 20) / 3 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),
@@ -642,15 +638,10 @@ class _SubjectMovieState extends State<SubjectMovie>
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(bottom: 5),
-                              child: Text(
-                                '${item['rating'] == null ? '' : item['rating']['value']}',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: Color(0xff808080)),
-                              ),
-                            )
+                            item['rating'] == null
+                                ? Container()
+                                : Rating(double.tryParse(
+                                    '${item['rating']['value']}'))
                           ],
                         ),
                       );
@@ -667,7 +658,7 @@ class _SubjectMovieState extends State<SubjectMovie>
                   '豆瓣榜单',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
