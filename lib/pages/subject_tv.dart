@@ -214,12 +214,12 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  padding: EdgeInsets.only(top: 5),
                   child: Text(
                     '${item['title']}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(),
                   ),
                 ),
                 Container(
@@ -228,7 +228,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                     '${item['rating'] == null ? '' : item['rating']['value']}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20, color: Color(0xff808080)),
+                    style: TextStyle(color: Color(0xff808080)),
                   ),
                 )
               ],
@@ -315,7 +315,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '热播新剧',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -342,12 +342,11 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                         border: Border(
                             bottom: BorderSide(
                                 color: tvType == idx ? Colors.black : Colors.transparent,
-                                width: 4))),
+                                width: 3))),
                     child: Text(
                       '$item',
                       style: TextStyle(
                         color: tvType == idx ? Colors.black : Color(0xff808080),
-                        fontSize: 22,
                         fontWeight: tvType == idx ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
@@ -404,7 +403,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '热播综艺',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -431,12 +430,12 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                         border: Border(
                             bottom: BorderSide(
                                 color: showType == idx ? Colors.black : Colors.transparent,
-                                width: 4))),
+                                width: 3))),
                     child: Text(
                       '$item',
                       style: TextStyle(
                         color: showType == idx ? Colors.black : Color(0xff808080),
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: showType == idx ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
@@ -473,7 +472,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '豆瓣榜单',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -574,7 +573,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '分类浏览',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -616,7 +615,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '即将播出剧集',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -701,7 +700,7 @@ class _SubjectTVState extends State<SubjectTV> with AutomaticKeepAliveClientMixi
                   '为你推荐',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

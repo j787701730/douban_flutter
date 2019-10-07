@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, platform: TargetPlatform.iOS),
+      theme:
+          ThemeData(primarySwatch: Colors.blue, platform: TargetPlatform.iOS),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -65,9 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: WillPopScope(
           onWillPop: () async {
-            Toast.show("再按一次退出app", context, duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+            Toast.show("再按一次退出app", context,
+                duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
             if (_lastPressedAt == null ||
-                DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
+                DateTime.now().difference(_lastPressedAt) >
+                    Duration(seconds: 1)) {
               //两次点击间隔超过1秒则重新计时
               _lastPressedAt = DateTime.now();
               return false;
@@ -89,11 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: nav.length,
                 itemBuilder: (context, index) => nav[index]),
             bottomNavigationBar: Theme(
-                data: ThemeData(splashFactory: NoSplashFactory(), highlightColor: Color(0xffff)),
+                data: ThemeData(
+                    splashFactory: NoSplashFactory(),
+                    highlightColor: Color(0xffff)),
                 child: Container(
-                  height: 65,
+                  height: 50,
                   decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Color(0xffEBEBEB), width: 1))),
+                      border: Border(
+                          top: BorderSide(color: Color(0xffEBEBEB), width: 1))),
                   child: BottomNavigationBar(
                     elevation: 0,
                     selectedFontSize: 10,
@@ -110,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _tabIndex == 0
                                 ? 'images/ic_tab_home_active.webp'
                                 : 'images/ic_tab_home_normal.webp',
-                            width: 38,
-                            height: 38,
+                            width: 24,
+                            height: 24,
                             fit: BoxFit.fitHeight,
                           ),
                           title: Text(
@@ -122,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _tabIndex == 1
                                 ? 'images/ic_tab_subject_active.webp'
                                 : 'images/ic_tab_subject_normal.webp',
-                            width: 38,
-                            height: 38,
+                            width: 24,
+                            height: 24,
                             fit: BoxFit.fitHeight,
                           ),
                           title: Text(
@@ -134,8 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _tabIndex == 2
                                 ? 'images/ic_tab_group_active.webp'
                                 : 'images/ic_tab_group_normal.webp',
-                            width: 38,
-                            height: 38,
+                            width: 24,
+                            height: 24,
                             fit: BoxFit.fitHeight,
                           ),
                           title: Text(
@@ -146,8 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _tabIndex == 3
                                 ? 'images/ic_tab_shiji_active.webp'
                                 : 'images/ic_tab_shiji_normal.webp',
-                            width: 38,
-                            height: 38,
+                            width: 24,
+                            height: 24,
                             fit: BoxFit.fitHeight,
                           ),
                           title: Text('市集')),
@@ -156,8 +162,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _tabIndex == 4
                                 ? 'images/ic_tab_profile_active.webp'
                                 : 'images/ic_tab_profile_normal.webp',
-                            width: 38,
-                            height: 38,
+                            width: 24,
+                            height: 24,
                             fit: BoxFit.fitHeight,
                           ),
                           title: Text('我的')),

@@ -10,7 +10,8 @@ class SubjectMovie extends StatefulWidget {
   _SubjectMovieState createState() => _SubjectMovieState();
 }
 
-class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClientMixin {
+class _SubjectMovieState extends State<SubjectMovie>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -22,7 +23,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
     _getRecommend3('');
   }
 
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
   int start = 0;
   bool showTab = false;
   Map movieSubjectEntrances = {}; // 头部导航栏
@@ -53,9 +55,11 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
             if (o['module_name'] == 'movie_subject_entrances') {
               movieSubjectEntrances = o;
             } else if (o['module_name'] == 'movie_showing') {
-              movieShowing = o['data']['subject_collection_boards'][0]['items'].sublist(0, 6);
+              movieShowing = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 6);
             } else if (o['module_name'] == 'movie_soon') {
-              movieSoon = o['data']['subject_collection_boards'][0]['items'].sublist(0, 6);
+              movieSoon = o['data']['subject_collection_boards'][0]['items']
+                  .sublist(0, 6);
             } else if (o['module_name'] == 'movie_hot_gaia') {
               movieHotGaia = o['data']['subject_collection_boards'][0]['items'];
             } else if (o['module_name'] == 'movie_selected_collections') {
@@ -159,7 +163,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
               : Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: movieSubjectEntrances['data']['subject_entraces'].map<Widget>((item) {
+                    children: movieSubjectEntrances['data']['subject_entraces']
+                        .map<Widget>((item) {
                       return Container(
                         child: Center(
                           child: Column(
@@ -171,7 +176,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 width: 40,
                                 height: 40,
                                 fit: BoxFit.cover,
@@ -201,7 +207,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                           child: Container(
                             decoration: BoxDecoration(
                                 color: Color(0xff4C4C4C),
-                                borderRadius: BorderRadius.all(Radius.circular(6))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(6))),
                             height: 164,
                           )),
                       Positioned(
@@ -213,6 +220,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 Icon(
                                   Icons.event_seat,
                                   color: Colors.white,
+                                  size: 16,
                                 ),
                                 Text(
                                   ' 看电影',
@@ -229,13 +237,15 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(6.0),
                               child: CachedNetworkImage(
-                                imageUrl: '${todayPlays['videos'][2]['pic']['large']}',
+                                imageUrl:
+                                    '${todayPlays['videos'][2]['pic']['large']}',
                                 placeholder: (context, url) => new Container(
                                   child: Center(
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 fit: BoxFit.cover,
                               ))),
                       Positioned(
@@ -246,13 +256,15 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(6.0),
                               child: CachedNetworkImage(
-                                imageUrl: '${todayPlays['videos'][1]['pic']['large']}',
+                                imageUrl:
+                                    '${todayPlays['videos'][1]['pic']['large']}',
                                 placeholder: (context, url) => new Container(
                                   child: Center(
                                     child: CupertinoActivityIndicator(),
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => new Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    new Icon(Icons.error),
                                 fit: BoxFit.cover,
                               ))),
                       Positioned(
@@ -263,13 +275,15 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(6.0),
                             child: CachedNetworkImage(
-                              imageUrl: '${todayPlays['videos'][0]['pic']['large']}',
+                              imageUrl:
+                                  '${todayPlays['videos'][0]['pic']['large']}',
                               placeholder: (context, url) => new Container(
                                 child: Center(
                                   child: CupertinoActivityIndicator(),
                                 ),
                               ),
-                              errorWidget: (context, url, error) => new Icon(Icons.error),
+                              errorWidget: (context, url, error) =>
+                                  new Icon(Icons.error),
                               fit: BoxFit.cover,
                             ),
                           )),
@@ -281,7 +295,10 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                             children: <Widget>[
                               Text(
                                 '今日可播放电影已更新',
-                                style: TextStyle(color: Colors.white, height: 1.5, fontSize: 18),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    height: 1.5,
+                                    fontSize: 16),
                               ),
                               Row(
                                 children: <Widget>[
@@ -303,7 +320,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 20),
             decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Color(0xff999999), width: 1))),
+                border: Border(
+                    bottom: BorderSide(color: Color(0xff999999), width: 1))),
             child: Row(
               children: <Widget>[
                 GestureDetector(
@@ -317,13 +335,17 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                color: !showTab ? Colors.black : Colors.transparent, width: 4))),
+                                color: !showTab
+                                    ? Colors.black
+                                    : Colors.transparent,
+                                width: 2))),
                     child: Text(
                       '影院热映',
                       style: TextStyle(
                         color: !showTab ? Colors.black : Color(0xff808080),
-                        fontSize: 30,
-                        fontWeight: !showTab ? FontWeight.bold : FontWeight.normal,
+                        fontSize: 20,
+                        fontWeight:
+                            !showTab ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -342,13 +364,16 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                color: showTab ? Colors.black : Colors.transparent, width: 4))),
+                                color:
+                                    showTab ? Colors.black : Colors.transparent,
+                                width: 2))),
                     child: Text(
                       '即将上映',
                       style: TextStyle(
                         color: showTab ? Colors.black : Color(0xff808080),
-                        fontSize: 30,
-                        fontWeight: showTab ? FontWeight.bold : FontWeight.normal,
+                        fontSize: 20,
+                        fontWeight:
+                            showTab ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -376,17 +401,21 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                   children: <Widget>[
                                     Positioned(
                                         child: ClipRRect(
-                                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(6)),
                                       child: CachedNetworkImage(
                                         imageUrl: '${item['cover']['url']}',
-                                        placeholder: (context, url) => new Container(
+                                        placeholder: (context, url) =>
+                                            new Container(
                                           child: Center(
                                             child: CupertinoActivityIndicator(),
                                           ),
                                         ),
-                                        errorWidget: (context, url, error) => new Icon(Icons.error),
+                                        errorWidget: (context, url, error) =>
+                                            new Icon(Icons.error),
                                         width: (width - 20 - 20) / 2,
-                                        height: (width - 20 - 20) / 2 * 810 / 540,
+                                        height:
+                                            (width - 20 - 20) / 2 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),
@@ -410,12 +439,11 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 5, bottom: 5),
+                                padding: EdgeInsets.only(top: 5),
                                 child: Text(
                                   '${item['title']}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 20),
                                 ),
                               ),
                               Container(
@@ -424,7 +452,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                   '${item['rating'] == null ? '' : item['rating']['value']}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 20, color: Color(0xff808080)),
+                                  style: TextStyle(color: Color(0xff808080)),
                                 ),
                               )
                             ],
@@ -454,17 +482,21 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                   children: <Widget>[
                                     Positioned(
                                         child: ClipRRect(
-                                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(6)),
                                       child: CachedNetworkImage(
                                         imageUrl: '${item['cover']['url']}',
-                                        placeholder: (context, url) => new Container(
+                                        placeholder: (context, url) =>
+                                            new Container(
                                           child: Center(
                                             child: CupertinoActivityIndicator(),
                                           ),
                                         ),
-                                        errorWidget: (context, url, error) => new Icon(Icons.error),
+                                        errorWidget: (context, url, error) =>
+                                            new Icon(Icons.error),
                                         width: (width - 20 - 20) / 2,
-                                        height: (width - 20 - 20) / 2 * 810 / 540,
+                                        height:
+                                            (width - 20 - 20) / 2 * 810 / 540,
                                         fit: BoxFit.cover,
                                       ),
                                     )),
@@ -488,33 +520,38 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 5, bottom: 5),
+                                padding: EdgeInsets.only(top: 5),
                                 child: Text(
                                   '${item['title']}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 20),
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 5, bottom: 5),
+                                padding: EdgeInsets.only(bottom: 5),
                                 child: Text(
                                   '${item['wish_count']}人想看',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 18, color: Color(0xff999999)),
+                                  style: TextStyle(color: Color(0xff999999)),
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.red, width: 2),
-                                    borderRadius: BorderRadius.all(Radius.circular(6))),
-                                padding: EdgeInsets.only(top: 2, bottom: 2, left: 6, right: 6),
+                                    border:
+                                        Border.all(color: Colors.red, width: 1),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6))),
+                                padding: EdgeInsets.only(
+                                    top: 1, bottom: 1, left: 6, right: 6),
                                 child: Text(
-                                  '${item['release_date']}'.replaceAll('.', '月') + '日',
+                                  '${item['release_date']}'
+                                          .replaceAll('.', '月') +
+                                      '日',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 18, color: Colors.red),
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.red),
                                 ),
                               )
                             ],
@@ -534,7 +571,7 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                   '豆瓣热门',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -559,15 +596,18 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 children: <Widget>[
                                   Positioned(
                                       child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6)),
                                     child: CachedNetworkImage(
                                       imageUrl: '${item['cover']['url']}',
-                                      placeholder: (context, url) => new Container(
+                                      placeholder: (context, url) =>
+                                          new Container(
                                         child: Center(
                                           child: CupertinoActivityIndicator(),
                                         ),
                                       ),
-                                      errorWidget: (context, url, error) => new Icon(Icons.error),
+                                      errorWidget: (context, url, error) =>
+                                          new Icon(Icons.error),
                                       width: (width - 20 - 20) / 2,
                                       height: (width - 20 - 20) / 2 * 810 / 540,
                                       fit: BoxFit.cover,
@@ -593,21 +633,22 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                              padding: EdgeInsets.only(
+                                top: 5,
+                              ),
                               child: Text(
                                 '${item['title']}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 20),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                              padding: EdgeInsets.only(bottom: 5),
                               child: Text(
                                 '${item['rating'] == null ? '' : item['rating']['value']}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 20, color: Color(0xff808080)),
+                                style: TextStyle(color: Color(0xff808080)),
                               ),
                             )
                           ],
@@ -639,11 +680,13 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                   height: 340,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: movieSelectedCollections['data']['selected_collections']
+                    children: movieSelectedCollections['data']
+                            ['selected_collections']
                         .map<Widget>((item) {
                       return Container(
                         margin: EdgeInsets.only(
-                            left: movieSelectedCollections['data']['selected_collections']
+                            left: movieSelectedCollections['data']
+                                            ['selected_collections']
                                         .indexOf(item) ==
                                     0
                                 ? 0
@@ -656,9 +699,11 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                               height: 220,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(6), topRight: Radius.circular(6)),
+                                    topLeft: Radius.circular(6),
+                                    topRight: Radius.circular(6)),
                                 image: DecorationImage(
-                                    image: NetworkImage('${item['header_bg_image']}'),
+                                    image: NetworkImage(
+                                        '${item['header_bg_image']}'),
                                     fit: BoxFit.cover),
                               ),
                               child: Stack(
@@ -676,7 +721,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                     left: 10,
                                     child: Text(
                                       '${item['name']}',
-                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
                                     ),
                                   )
                                 ],
@@ -685,7 +731,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                             Container(
                               height: 120,
                               width: width * 0.618,
-                              padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                              padding:
+                                  EdgeInsets.only(top: 10, left: 15, right: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(6),
@@ -698,14 +745,17 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                   return Container(
                                     child: RichText(
                                       text: TextSpan(
-                                          text: '${item['items'].indexOf(list) + 1}. ',
-                                          style: TextStyle(fontSize: 16, height: 1.2),
+                                          text:
+                                              '${item['items'].indexOf(list) + 1}. ',
+                                          style: TextStyle(
+                                              fontSize: 16, height: 1.2),
                                           children: <TextSpan>[
                                             TextSpan(text: '${list['title']}'),
                                             TextSpan(
                                                 text:
                                                     ' ${list['rating'] == null ? '' : list['rating']['value']}',
-                                                style: TextStyle(color: Color(0xffF4A833))),
+                                                style: TextStyle(
+                                                    color: Color(0xffF4A833))),
                                           ]),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -730,7 +780,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                       Container(
                         child: ClipRRect(
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(6), topRight: Radius.circular(6)),
+                              topLeft: Radius.circular(6),
+                              topRight: Radius.circular(6)),
                           child: CachedNetworkImage(
                             imageUrl: '${weekPlays[0]['cover_url']}',
                             placeholder: (context, url) => new Container(
@@ -738,7 +789,8 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 child: CupertinoActivityIndicator(),
                               ),
                             ),
-                            errorWidget: (context, url, error) => new Icon(Icons.error),
+                            errorWidget: (context, url, error) =>
+                                new Icon(Icons.error),
                             width: (width - 20),
                             height: 300,
                             fit: BoxFit.cover,
@@ -749,16 +801,19 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                         padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
                         width: width - 20,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(6), bottomRight: Radius.circular(6)),
-                            color: Color(int.tryParse(
-                                '0xff${weekPlays[0]['color_scheme']['primary_color_light']}'))),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(6),
+                              bottomRight: Radius.circular(6)),
+//                            color: Color(int.tryParse(
+//                                '0xff${weekPlays[0]['color_scheme']['primary_color_light']}'))
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
                               '${weekPlays[0]['subtitle']}',
-                              style: TextStyle(color: Color(0xff657580), fontSize: 24),
+                              style: TextStyle(
+                                  color: Color(0xff657580), fontSize: 24),
                             ),
                             Row(
                               children: <Widget>[
@@ -769,13 +824,15 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                 ),
                                 Text(
                                   '${weekPlays[0]['title']}',
-                                  style: TextStyle(color: Colors.white, fontSize: 30),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 30),
                                 )
                               ],
                             ),
                             Text(
                               '共${weekPlays[0]['items_count']}部片',
-                              style: TextStyle(color: Color(0xffA4AEB4), fontSize: 24),
+                              style: TextStyle(
+                                  color: Color(0xffA4AEB4), fontSize: 24),
                             ),
                           ],
                         ),
@@ -793,25 +850,30 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                     ? Container(
                                         margin: EdgeInsets.only(bottom: 15),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
                                             CachedNetworkImage(
                                               imageUrl: '${item['cover_url']}',
-                                              placeholder: (context, url) => new Container(
+                                              placeholder: (context, url) =>
+                                                  new Container(
                                                 child: Center(
-                                                  child: CupertinoActivityIndicator(),
+                                                  child:
+                                                      CupertinoActivityIndicator(),
                                                 ),
                                               ),
-                                              errorWidget: (context, url, error) =>
-                                                  new Icon(Icons.error),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      new Icon(Icons.error),
                                               width: (width - 20),
                                               height: 290,
                                               fit: BoxFit.cover,
                                             ),
                                             Text(
                                               '${item['subtitle']}',
-                                              style:
-                                                  TextStyle(color: Color(0xffBDBDBD), height: 1.5),
+                                              style: TextStyle(
+                                                  color: Color(0xffBDBDBD),
+                                                  height: 1.5),
                                             ),
                                             Text(
                                               '${item['title']}',
@@ -819,8 +881,9 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                             ),
                                             Text(
                                               '共${item['items_count']}部',
-                                              style:
-                                                  TextStyle(color: Color(0xffBDBDBD), fontSize: 14),
+                                              style: TextStyle(
+                                                  color: Color(0xffBDBDBD),
+                                                  fontSize: 14),
                                             ),
                                           ],
                                         ),
@@ -828,23 +891,30 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                     : Container(
                                         margin: EdgeInsets.only(bottom: 15),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Row(
                                               children: <Widget>[
                                                 item['pic'] == null
                                                     ? Container()
                                                     : CachedNetworkImage(
-                                                        imageUrl: '${item['pic']['normal']}',
-                                                        placeholder: (context, url) =>
-                                                            new Container(
+                                                        imageUrl:
+                                                            '${item['pic']['normal']}',
+                                                        placeholder:
+                                                            (context, url) =>
+                                                                new Container(
                                                           child: Center(
-                                                            child: CupertinoActivityIndicator(),
+                                                            child:
+                                                                CupertinoActivityIndicator(),
                                                           ),
                                                         ),
-                                                        errorWidget: (context, url, error) =>
-                                                            new Icon(Icons.error),
-                                                        width: (width - 20) * 0.3,
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            new Icon(
+                                                                Icons.error),
+                                                        width:
+                                                            (width - 20) * 0.3,
                                                         height: 200,
                                                         fit: BoxFit.cover,
                                                       ),
@@ -853,18 +923,31 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                                     : Expanded(
                                                         child: Container(
                                                         margin: EdgeInsets.only(
-                                                            left: item['pic'] == null ? 0 : 15),
-                                                        child: CachedNetworkImage(
-                                                          imageUrl: '${item['photos'][0]}',
-                                                          placeholder: (context, url) =>
-                                                              new Container(
+                                                            left: item['pic'] ==
+                                                                    null
+                                                                ? 0
+                                                                : 15),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl: item[
+                                                                      'photos']
+                                                                  .isEmpty
+                                                              ? ''
+                                                              : '${item['photos'][0]}',
+                                                          placeholder:
+                                                              (context, url) =>
+                                                                  new Container(
                                                             child: Center(
-                                                              child: CupertinoActivityIndicator(),
+                                                              child:
+                                                                  CupertinoActivityIndicator(),
                                                             ),
                                                           ),
-                                                          errorWidget: (context, url, error) =>
-                                                              new Icon(Icons.error),
-                                                          width: (width - 20) * 0.3,
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              new Icon(
+                                                                  Icons.error),
+                                                          width: (width - 20) *
+                                                              0.3,
                                                           height: 200,
                                                           fit: BoxFit.cover,
                                                         ),
@@ -872,23 +955,29 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                               ],
                                             ),
                                             Row(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Expanded(
                                                   flex: 1,
                                                   child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: <Widget>[
                                                       RichText(
                                                         text: TextSpan(
-                                                            text: '${item['title']}',
-                                                            style: TextStyle(
-                                                                color: Colors.black, fontSize: 18),
+                                                            text:
+                                                                '${item['title']}',
+                                                            style: TextStyle(color: Colors.black, fontSize: 18),
                                                             children: <TextSpan>[
-                                                              TextSpan(text: '(${item['year']})')
+                                                              TextSpan(
+                                                                  text:
+                                                                      '(${item['year']})')
                                                             ]),
                                                         maxLines: 1,
-                                                        overflow: TextOverflow.ellipsis,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                       Text(
                                                           '${item['rating'] == null ? '' : item['rating']['value']}'),
@@ -904,7 +993,9 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                                       ),
                                                       Text(
                                                         '想看',
-                                                        style: TextStyle(color: Color(0xffFF9E0A)),
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xffFF9E0A)),
                                                       )
                                                     ],
                                                   ),
@@ -922,17 +1013,25 @@ class _SubjectMovieState extends State<SubjectMovie> with AutomaticKeepAliveClie
                                             Wrap(
                                               spacing: 10,
                                               runSpacing: 4,
-                                              children: item['tags'].map<Widget>((tag) {
+                                              children: item['tags']
+                                                  .map<Widget>((tag) {
                                                 return Container(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
-                                                          BorderRadius.all(Radius.circular(10)),
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
                                                       color: Color(0xffF7EFE4)),
                                                   padding: EdgeInsets.only(
-                                                      top: 3, bottom: 3, left: 6, right: 6),
+                                                      top: 3,
+                                                      bottom: 3,
+                                                      left: 6,
+                                                      right: 6),
                                                   child: Text(
                                                     '${tag['name']} >',
-                                                    style: TextStyle(color: Color(0xff6E4A11)),
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xff6E4A11)),
                                                   ),
                                                 );
                                               }).toList(),

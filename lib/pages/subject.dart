@@ -78,6 +78,7 @@ class _SubjectState extends State<Subject> with SingleTickerProviderStateMixin {
           labelColor: Colors.black,
           unselectedLabelColor: Color(0xff999999),
           indicatorColor: Colors.black,
+          labelPadding: EdgeInsets.zero,
           indicatorWeight: 3,
           indicatorSize: TabBarIndicatorSize.label,
           onTap: (index) {
